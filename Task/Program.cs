@@ -21,20 +21,40 @@ void PrintArray(int[] Array)
     }
 }
 
-void FillArrayEvenNumbers(int[] ArrayA)
+int FindLength(int[] ArrayA)
 {
-    int[] ArrayB = new int[ArrayA.Length];
+    int count = 0;
+
     for (int i = 0; i < ArrayA.Length; i++)
     {
         if (ArrayA[i] % 2 == 0)
         {
-            ArrayB[i] = ArrayA[i];
-            System.Console.Write($"{ArrayB[i]} ");
+            count++;
+
         }
     }
+    return count;
 }
+
+int[] GetArrayB(int[] ArrayA, int size)
+{
+    int index = 0;
+    int[] ArrayB = new int[size];
+    for (int i = 0; i < ArrayA.Length; i++)
+    {
+        if (ArrayA[i] % 2 == 0)
+        {
+            ArrayB[index] = ArrayA[i];
+            index++;
+        }
+    }
+    return ArrayB;
+}
+
 
 int[] ArrayA = GetArrayA(10, 1, 10);
 PrintArray(ArrayA);
+int i = FindLength(ArrayA);
 System.Console.WriteLine();
-FillArrayEvenNumbers(ArrayA);
+int[] ArrayB = GetArrayB(ArrayA, i);
+PrintArray(ArrayB);
